@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./features/components/layout/layout.module').then(x => x.LayoutModule) }
+  { path: '', loadChildren: () => import('./features/components/layout/layout.module').then(x => x.LayoutModule) },
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
