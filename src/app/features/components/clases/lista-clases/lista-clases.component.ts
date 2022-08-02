@@ -67,6 +67,7 @@ export class ListaClasesComponent implements OnInit, OnDestroy {
           next: (clases) => {
             this.dataSource = clases;
             this.error = false;
+            this.obtenerClases();
           },
           error: (mensajeError) => {
             this.mensajeError = mensajeError;
@@ -89,9 +90,10 @@ export class ListaClasesComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.claseService.eliminarClase(id).subscribe(
         {
-          next: (claseEliminada) => {
-            this.dataSource = this.dataSource.filter(x => !claseEliminada.includes(x));
+          next: (clases) => {
+            this.dataSource = clases;
             this.error = false;
+            this.obtenerClases();
           },
           error: (mensajeError) => {
             this.mensajeError = mensajeError;
@@ -110,6 +112,7 @@ export class ListaClasesComponent implements OnInit, OnDestroy {
           next: (clases) => {
             this.dataSource = clases;
             this.error = false;
+            this.obtenerClases();
           },
           error: (mensajeError) => {
             this.mensajeError = mensajeError;

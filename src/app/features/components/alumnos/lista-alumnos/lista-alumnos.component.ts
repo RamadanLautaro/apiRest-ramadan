@@ -70,6 +70,7 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
           next: (alumnos) => {
             this.dataSource = alumnos;
             this.error = false;
+            this.obtenerAlumnos();
           },
           error: (mensajeError) => {
             this.mensajeError = mensajeError;
@@ -93,9 +94,10 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.alumnoService.eliminarAlumno(id).subscribe(
         {
-          next: (alumnoEliminado) => {
-            this.dataSource = this.dataSource.filter(x => !alumnoEliminado.includes(x));
+          next: (alumnos) => {
+            this.dataSource = alumnos;
             this.error = false;
+            this.obtenerAlumnos();
           },
           error: (mensajeError) => {
             this.mensajeError = mensajeError;
@@ -114,6 +116,7 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
           next: (alumnos) => {
             this.dataSource = alumnos;
             this.error = false;
+            this.obtenerAlumnos();
           },
           error: (mensajeError) => {
             this.mensajeError = mensajeError;

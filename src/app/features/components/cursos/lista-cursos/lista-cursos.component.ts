@@ -90,9 +90,10 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.cursoService.eliminarCurso(id).subscribe(
         {
-          next: (cursoEliminado) => {
-            this.dataSource = this.dataSource.filter(x => !cursoEliminado.includes(x));
+          next: (cursos) => {
+            this.dataSource = cursos;
             this.error = false;
+            this.obtenerCursos();
           },
           error: (mensajeError) => {
             this.mensajeError = mensajeError;
@@ -111,6 +112,7 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
           next: (cursos) => {
             this.dataSource = cursos;
             this.error = false;
+            this.obtenerCursos();
           },
           error: (mensajeError) => {
             this.mensajeError = mensajeError;
